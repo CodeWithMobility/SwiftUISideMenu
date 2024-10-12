@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+    @State var selectedNavigationItem = 0
+        @State var showSideMenu = false
+        
+        var body: some View {
+            ZStack {
+                SideMenuView(showSideMenu: self.$showSideMenu, selectedNavigationItem: self.$selectedNavigationItem)
+                ContainerView(selectedNavigationItem: self.$selectedNavigationItem, showSideMenu: self.$showSideMenu)
+            }.background(AppConstants.CoreColor)
         }
-        .padding()
-    }
 }
 
 #Preview {
